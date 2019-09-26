@@ -1,0 +1,28 @@
+{% extends 'account/layout/base.html' %}
+
+{% block title %}My account{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active">My account</li>
+{% endblock %}
+
+{% block wrapper %}
+
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10 col-sm-12">
+          <div class="card mt-4">
+            <div class="card-body shadow">
+              <h3 class="card-title">Sign up</h3>
+              <form method="post" novalidate>
+                {% csrf_token %}
+                  {% include 'account/partials/_form.html' %}
+                <button type="submit" class="btn btn-primary btn-block">Edit & Save</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+
+{% endblock %}

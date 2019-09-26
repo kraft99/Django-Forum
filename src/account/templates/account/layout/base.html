@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="{% static 'account/css/vendors/bootstrap.min.css' %}" type="text/css">
+	<meta charset="utf-8">
+	<meta name="" content="">
+	<meta name="keywords" content="">
+</head>
+<body>
+	<!-- Template Placeholder -->
+	<section class="container">
+		{% block wrapper %}{% endblock %}
+	</section>
+	<!-- /Template Placeholder -->
+
+<!-- Scripts -->
+<script type="text/javascript" src="{% static 'account/js/vendors/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'account/js/vendors/bootstrap.min.js' %}"></script>
+
+<script type="text/javascript">
+	{% block js %}/*Embed Js in Html*/{% endblock %}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+{% extends 'boards/layout/base.html' %}
+
+{% block title %} Post Edit- Student Board{% endblock %}
+
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'boards:board_index' %}">Boards</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'boards:board_topics' post.topic.board.pk %}">{{ post.topic.board.name }}</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'boards:topic_posts' post.topic.board.pk post.topic.pk %}">{{ post.topic.subject }}</a></li>
+  <li class="breadcrumb-item active">Edit post</li>
+{% endblock %}
+
+{% block wrapper %}
+  <form method="post" class="mb-4" novalidate>
+    {% csrf_token %}
+    {% include 'boards/partials/_form.html' %}
+    <button type="submit" class="btn btn-success">Save changes</button>
+    <a href="{% url 'boards:topic_posts' post.topic.board.pk post.topic.pk %}" class="btn btn-outline-secondary" role="button">Cancel</a>
+  </form>
+{% endblock %}

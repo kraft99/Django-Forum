@@ -1,0 +1,106 @@
+{% extends 'account/layout/base.html' %}
+
+{% block title %} SignUp - Student Board{% endblock %}
+
+{% block wrapper %}
+
+<!-- signup card -->
+  <div class="container">
+    <h1 class="text-center logo my-4">
+      <a href="{% url 'boards:board_index' %}">Student Boards</a>
+    </h1>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <div class="card">
+          <div class="card-body shadow">
+            <h3 class="card-title">Sign up</h3>
+            <form method="post" novalidate>
+              {% csrf_token %}
+                {% include 'account/partials/_form.html' %}
+              <button type="submit" class="btn btn-primary btn-block">Create an account</button>
+            </form>
+          </div>
+          <div class="card-footer text-muted text-center">
+            Already have an account? <a href="#">Log in</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- /signup card -->
+{% endblock %}
+
+
+
+{% block js %}
+
+	function getCookie(name) {
+        // Function to get any cookie available in the session.
+        var cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            var cookies = document.cookie.split(';');
+            for (var i = 0; i < cookies.length; i++) {
+                var cookie = jQuery.trim(cookies[i]);
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    };
+
+    function csrfSafeMethod(method) {
+        // These HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+    }
+
+    var csrftoken = getCookie('csrftoken');
+    var page_title = $(document).attr("title");
+    // This sets up every ajax call with proper headers.
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+
+
+	$('#id_username').change(function(e){
+		e.preventDefault();
+
+		var username_val = $(this).val();
+
+		var url_endpoint = "{% url 'account:validate_username' %}";
+		console.log(url_endpoint);
+
+		$.ajax({
+		url: url_endpoint,
+		
+		data : {
+		'username': username_val,
+		},
+
+		cache : false,
+
+		dataType: 'json',
+
+		success: function(response){
+		if(response.is_available){
+			console.log("username is already taken,pick another name");
+			}
+		}
+
+		});
+
+		return false;
+	});
+
+
+
+
+{% endblock %}

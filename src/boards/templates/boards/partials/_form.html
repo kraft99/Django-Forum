@@ -1,0 +1,46 @@
+<!-- 
+Re-useability of form rendered template
+ -->
+
+{% load widget_tweaks %}
+    <!-- form body -->
+      <!-- render error--->
+        {% if form.non_field_errors %}
+          <div class="alert alert-danger" role="alert">
+            {% for error in form.non_field_errors %}
+              <p{% if forloop.last %} class="mb-0"{% endif %}>{{ error }}</p>
+            {% endfor %}
+          </div>
+        {% endif %}
+      <!-- /render error--->
+     {% for field in form %}
+        <div class="form-group">
+          {{ field.label_tag }}
+
+          <!-- error fields style -->
+          {% if form.is_bound %}<!-- a bound form fields -->
+                {% if field.errors %}
+
+                  {% render_field field class="form-control is-invalid" %}
+                  {% for error in field.errors %}
+                    <div class="invalid-feedback">
+                      {{ error }}
+                    </div>
+                  {% endfor %}
+
+                {% else %}
+                  {% render_field field class="form-control is-valid" %}
+                {% endif %}
+          <!-- /error fields styles --> 
+          {% else %} <!-- / bound form fields -->
+                {% render_field field class="form-control" %} <!-- unbound form fields -->
+          {% endif %}
+
+          {% if field.help_text %}
+            <small class="form-text text-muted">
+              {{ field.help_text }} <!-- render help text -->
+            </small>
+          {% endif %}
+        </div>
+  {% endfor %}
+    <!-- /form body -->

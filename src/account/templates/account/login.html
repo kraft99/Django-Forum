@@ -1,0 +1,37 @@
+{% extends 'account/layout/base.html' %}
+
+{% block title %} SignIn - Student Board{% endblock %}
+
+{% block wrapper %}
+
+<!-- signup card -->
+  <div class="container">
+    <h1 class="text-center logo my-4">
+      <a href="{% url 'boards:board_index' %}">Django Boards</a>
+    </h1>
+    <div class="row justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <div class="card shadow">
+          <div class="card-body">
+            <h3 class="card-title">Sign In</h3>
+            <form method="post" novalidate>
+              {% csrf_token %}
+                {% include 'account/partials/_form.html' %}
+                <input type="hidden" name="next" value="{{ next }}">
+              <button type="submit" class="btn btn-primary btn-block">SignIn</button>
+            </form>
+          </div>
+          <div class="card-footer text-muted text-center">
+            New to Django Boards?
+            <a href="{% url 'account:sign-up' %}">Sign up</a>
+            or 
+            <a href="#">Forgotten your password? </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- /signup card -->
+{% endblock %}
+

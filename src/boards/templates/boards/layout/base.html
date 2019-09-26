@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<link rel="stylesheet" href="{% static 'boards/css/vendors/bootstrap.min.css' %}" type="text/css">
+	<meta charset="utf-8">
+	<meta name="" content="">
+	<meta name="keywords" content="">
+</head>
+<body>
+	<!-- Partial Nav -->
+	{% include 'boards/partials/_nav.html' %}
+	<!-- /Partial Nav -->
+	<!-- Template Placeholder -->
+	<section class="container">
+		<!-- BreadCrumbs Placeholder -->
+		<ol class="breadcrumb my-4">
+			{% block breadcrumb %}{% endblock %}
+		</ol>
+		<!-- /BreadCrumbs Placeholder -->
+		{% block wrapper %}{% endblock %}
+	</section>
+	<!-- /Template Placeholder -->
+
+<!-- Scripts -->
+<script type="text/javascript" src="{% static 'boards/js/vendors/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'boards/js/vendors/bootstrap.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: 7bit
+Subject: [Django Boards] Please reset your password
+From: webmaster@localhost
+To: edward.mike.anaryo@gmail.com
+Date: Thu, 26 Sep 2019 02:13:09 -0000
+Message-ID: <156946398937.5920.16867190217800973601@KYONKOPA.rabotecfngo.com>
+
+Hi there,
+
+Someone asked for a password reset for the email address edward.mike.anaryo@gmail.com.
+Follow the link below:
+http://127.0.0.1:8000/account/reset/Mw/5a2-2111d1744c19d9e820a3/
+
+In case you forgot your Django Boards username: testy
+
+If clicking the link above doesn't work, please copy and paste the URL
+in a new browser window instead.
+
+If you've received this mail in error, it's likely that another user entered
+your email address by mistake while trying to reset a password. If you didn't
+initiate the request, you don't need to take any further action and can safely
+disregard this email.
+
+Thanks,
+
+The Django Boards Team
+-------------------------------------------------------------------------------
